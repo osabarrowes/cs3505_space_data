@@ -1,0 +1,61 @@
+Members Absent: None
+
+Next meeting
+TA: Josh Nelson, Thursday 4:15 PM
+
+Tech spikes
+  Data scraper & API interfacing - Corbin
+    Continuous data monitoring
+    API Keys
+  ffmpeg
+    a program that writes the text "hello world" in a picture - Ted
+    take multiple frames and pack them into a video - Ivan
+    dealing with audio files - Edward
+  AWS or other cloud based computing - Marley
+    Somewhere, the docker container must run on a cloud service and use cloud storage to run the program
+  More docker research - Garrett
+    Running additional docker containers from a container, in order to run additional tasks?
+
+Overall Project steps
+  Program to collect data from the internet in the short term
+    Identify data sources (complete)
+    Identify ways to get the data
+      scraper or API
+    Unified format to save data in
+      might depend on ffmpeg
+  Program to run the data collection program
+    Involves deployment of docker containers
+    Needs to run for a long time (about 24h) calling data collection program at regular intervals
+  Store the data
+    Persistent and accessible cloud storage where all the data is collected
+  Represent data meaningfully in a video
+    Visualize data
+    Scale the time appropriately for a minute long video
+    Output video file
+
+Tasks
+  Make github cards - Edward
+  Contact TA about moving the meeting time to 3:30 PM, Thursdays - Marley
+  Data sources
+    Supernovae data - http://www.rochesterastronomy.org/snimages/sndate.html
+      Updates once per day, with multiple entries (2-8)
+      Does it update at a regular time?
+      Might be too slow
+    Weather data - https://aprs.fi/weather/a/FW3937?range=day
+      API - figure out which of these works best
+        https://aprs.fi/page/api
+        https://weather.com/swagger-docs/ui/sun/v3/sunV3CurrentsOnDemand.json
+    Lightning data - https://ghrc.nsstc.nasa.gov/hydro/details/isslis_v1_nrt
+    Twitch viewer data
+      updates very rapidly
+      API - https://dev.twitch.tv/docs/api/
+    ISS location tracker - https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/International_Space_Station/Where_is_the_International_Space_Station
+      updates very rapidly
+    https://api.nasa.gov/
+      Garrett will pick a data source from this API
+
+Questions for TA
+  Running additional docker containers from one container?
+    Also, is this required? or can all the code run from a single docker container?
+  Any required documentation, beyond github projects?
+  Do we need to pull actual images/audio from the web, or just make images/audio to represent data?
