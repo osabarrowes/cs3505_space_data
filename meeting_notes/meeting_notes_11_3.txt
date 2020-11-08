@@ -56,6 +56,8 @@ Tasks
 
 Questions for TA
   Running additional docker containers from one container?
-    Also, is this required? or can all the code run from a single docker container?
+    Also, is this required? or can all the code run from a single docker container? (no)
   Any required documentation, beyond github projects?
+    no additional documentation required
   Do we need to pull actual images/audio from the web, or just make images/audio to represent data?
+    text to speech could count as pulling audio data from the internet
