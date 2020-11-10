@@ -53,7 +53,5 @@ RUN mkdir /cs3505 \
 #
 # Have additional steps appear after this
 
-COPY ./shell /cs3505
-
 
 
