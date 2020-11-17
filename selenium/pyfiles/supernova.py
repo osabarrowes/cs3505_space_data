@@ -12,7 +12,7 @@ driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,
                          )
 driver.get("http://www.rochesterastronomy.org/snimages/sndate.html")
 i = 2
-path = "/html/body/table[2]/tbody/tr["+str(i)+"]/td[5]"
+path = "/html/body/table[2]/tbody/tr["+str(i)+"]/td[3]"
 str1 = "/dataStorage/supernova.txt"
 file = open(str1, "w")
 
@@ -23,13 +23,13 @@ while True:
     month = element1.text.split("/")[1]
     day = element1.text.split("/")[2]
     nowTime = time.gmtime()
-    if nowTime.tm_year != int(year) or nowTime.tm_mon != int(month) or nowTime.tm_mday - 1 > int(day):
+    if nowTime.tm_year != int(year) or nowTime.tm_mon != int(month) or nowTime.tm_mday - 1 > int(float(day)):
         break
     path = "/html/body/table[2]/tbody/tr["+str(i)+"]/td[9]"
     i = i + 1
     element2 = driver.find_element_by_xpath(path)
     file.write(element1.text + " " + element2.text + "\n")
-    path = "/html/body/table[2]/tbody/tr["+str(i)+"]/td[5]"
+    path = "/html/body/table[2]/tbody/tr["+str(i)+"]/td[3]"
 
 file.close
 driver.close()

@@ -7,16 +7,15 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
 chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument("--autoplay-policy=no-user-gesture-required")
 driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,
                           options=chrome_options
                          )
-driver.get("https://www.ustream.tv/channel/iss-hdev-payload/pop-out")
+driver.get("https://weather.com/weather/today/l/b565aa4d4c1111a09ad8c1ede054636671f50d38757a6527b35d96b987ef86a8")
 
-time.sleep(5)
+str1 = "/dataStorage/temp" + str(time.time()) + ".png"
 
-str1 = "/dataStorage/ISS" + str(time.time()) + ".png"
+element = driver.find_element_by_xpath("/html/body/div[1]/main/div[2]/div[2]/div[1]/div/section/div")
 
-driver.save_screenshot(str1)
+element.screenshot(str1)
 
 driver.close()
