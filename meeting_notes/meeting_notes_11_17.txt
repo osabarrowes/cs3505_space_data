@@ -1,0 +1,24 @@
+Members Absent: None
+Next meeting: from 3:20 to 4:15 on Thursday, 11/19
+
+Garrett and Corbin have finished with the web scraper, but some data (i.e. supernovae) are stored in plain text right now.
+    Python scripts and selenium have been added to the git repo
+    TODO store text data as images, using the ffmpeg command (Ted worked on this). This should be relatively easy
+Ivan and Ted completed their task of image stitching.
+Their program requires input images to be .png using rgba pixel format.
+ffmpeg -i <filename.png>
+The above command can be used to check the pixel format
+Edward is continuing work on finalizing the layout, including specific pixel measurements and placement
+Marley has Cloud9 setup, as well as the elastic file storage, but there was some difficulty linking them together
+    The professor has said that he will make a tutorial on this process as many students are struggling with it, but no materials have been released as of yet
+
+Tasks for next time
+Corbin, Ted and Edward - Convert text data to images
+Garrett, Ivan and Edward - Make a sample video from dummy images using image layout parameters
+    Time scaling: make sure that data are displayed for an appropriate amount of time, and at the correct time
+Edward - finish the layout measurements by thursday
+Marley - continue work on AWS related issues
+
+Questions
+Can we have help and/or a tutorial on Linking EFS with EC2? There seems to be some difficulties with security specifically.
+    See announcement from today
