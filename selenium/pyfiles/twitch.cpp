@@ -84,7 +84,7 @@ void secondCall(string s)
 
     ofstream myfile;
     std::time_t result = std::time(nullptr);
-    std::string myLocation = to_string(result) + ".txt";
+    std::string myLocation = "//dataStorage//" + to_string(result) + ".txt";
     //std::string myLocation = "DataStorage" + str2 + ".txt";
     myfile.open (myLocation);
     myfile << a << "\n";
