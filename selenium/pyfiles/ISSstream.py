@@ -15,7 +15,7 @@ driver.get("https://www.ustream.tv/channel/iss-hdev-payload/pop-out")
 
 time.sleep(5)
 
-str1 = "/dataStorage/ISS" + str(time.time()) + ".png"
+str1 = "/dataStorage/" + str(time.time()) + ".png"
 
 driver.save_screenshot(str1)
 
