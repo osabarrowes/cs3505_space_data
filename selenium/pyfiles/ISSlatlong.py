@@ -14,7 +14,7 @@ driver.get("http://wsn.spaceflight.esa.int/iss/index_portal.php")
 time.sleep(20)
 Latitude = driver.find_element_by_xpath("/html/body/center/div[2]/div[1]/div[3]/table/tbody/tr/td[1]/div[2]")
 Longitude = driver.find_element_by_xpath("/html/body/center/div[2]/div[1]/div[3]/table/tbody/tr/td[3]/div[2]")
-str1 = r"/dataStorage/latlong" + str(time.time()) + ".txt"
+str1 = r"/dataStorage/" + str(time.time()) + ".txt"
 fileObject = open(str1, "w")
 fileObject.write(Latitude.text + " " + Longitude.text)
 fileObject.close()

@@ -27,6 +27,12 @@ RUN wget -N https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedrive
     && mv -f ~/chromedriver /usr/local/bin/chromedriver \
     && chown root:root /usr/local/bin/chromedriver \
     && chmod 0755 /usr/local/bin/chromedriver
+# INSTALL CURL UTILS
+RUN apt-get -y update && apt-get -y install \
+  apt-utils \
+  g++ \
+  curl \
+  libcurl4-openssl-dev
 
 # INSTALL SELENIUM
 RUN pip install selenium

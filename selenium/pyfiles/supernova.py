@@ -13,7 +13,7 @@ driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,
 driver.get("http://www.rochesterastronomy.org/snimages/sndate.html")
 i = 2
 path = "/html/body/table[2]/tbody/tr["+str(i)+"]/td[3]"
-str1 = "/dataStorage/supernova.txt"
+str1 = "/dataStorage/" + str(time.time()) + ".txt"
 file = open(str1, "w")
 
 
