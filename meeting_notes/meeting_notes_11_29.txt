@@ -1,0 +1,20 @@
+Members absent: Ted
+
+We commiserate over a lack of replies from Prof. Jensen...
+
+Marley:
+We really need prof. Help on this.
+EC2 doesn’t work on a schedule, so we use a cron job. Docker commands are run every 2 hours. It seems the amazon account logs us out at unpredictable times.
+Automation of AWS stuff would require a new account without restrictions and some code refactoring
+Lambda functions do work, but account restrictions prevent us from fully implementing it
+Which commands need to go into the cron job file (to be run every 2 hours)?
+    Supernovae can be run once every 2 hours
+    Other sources can be run once every 30 minutes
+For now, let’s run data collection on a local machine using cron so we have something to show.
+
+Garret and Ivan:
+Generalizing the framebuilder software is going well and should be done tonight or tomorrow.
+
+Edward: a bit behind on task. professor hasn’t posted any instructions for assignment submission and documentation, which makes completing that requirement ambiguous at the moment.
+
+Next meeting: tuesday at 2
