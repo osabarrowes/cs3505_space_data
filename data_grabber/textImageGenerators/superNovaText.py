@@ -10,10 +10,8 @@ This script will output a png image file with RGBA pixel
 format for each line in the file with a UNIX time for a name.
 The UNIX time is equivalent to the 
 The output destination can be adjusted by changing the outpath variable below.
-
 IMPORTANT PREREQUISITES:
 ffmpeg must be compiled with --enable-libfontconfig and --enable-libfreetype
-
 the following files must be present in the directory where the python script is executed:
     Modenine-2OPd.ttf   (the font we use to draw the text)
     isspos.png  (black box that is 640x36)
@@ -31,7 +29,7 @@ for line in lines:
     
     novaTime = datetime.datetime.strptime(line.split('.')[0],"%Y/%m/%d")
     decimalDay = line.split('.')[1].split(' ')[0]
-    novaTime = novaTime.timestamp() + float(decimalDay)/(len(decimalDay) * 10) * 86400
+    novaTime = novaTime.timestamp() + (float(decimalDay)/1000) * 86400
 
     outFileName = str(int(novaTime)) + ".png"
 
@@ -43,7 +41,3 @@ for line in lines:
     tempTextFile.write("   Last Supernova\nTime: " + line.split(' ')[0] + "\n   Magnitude: " + line.split(' ')[1])
     tempTextFile.close()
     os.system(ffmpegLine)
-    
-
-
-

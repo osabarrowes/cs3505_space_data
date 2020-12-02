@@ -27,14 +27,45 @@ RUN wget -N https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedrive
     && mv -f ~/chromedriver /usr/local/bin/chromedriver \
     && chown root:root /usr/local/bin/chromedriver \
     && chmod 0755 /usr/local/bin/chromedriver
-# INSTALL CURL UTILS
+
+# INSTALL CURL UTILS AND FFMPEG LIBS
 RUN apt-get -y update && apt-get -y install \
   apt-utils \
   g++ \
   curl \
-  libcurl4-openssl-dev
+  libcurl4-openssl-dev \
+  autoconf \
+  automake \
+  build-essential \
+  cmake \
+  git-core \
+  libass-dev \
+  libfreetype6-dev \
+  libgnutls28-dev \
+  libtool \
+  libvorbis-dev \
+  pkg-config \
+  texinfo \
+  wget \
+  yasm \
+  zlib1g-dev
 
 # INSTALL SELENIUM
 RUN pip install selenium
 
+
+#
+# Make ffmpeg inside image
+RUN mkdir /cs3505 \
+    ;cd /cs3505 \  
+    ;git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg \ 
+    ;cd ffmpeg \
+    ;git reset --hard  f7fd205f11d5299d6a16b0ff0ae85fddb32772f2  \
+    ;./configure  --prefix=/ \
+    ;make   \
+    ;make install 
+#
+# Have additional steps appear after this
+
 COPY ./pyfiles /pyfiles
+COPY ./textImageGenerators /textImageGenerators
