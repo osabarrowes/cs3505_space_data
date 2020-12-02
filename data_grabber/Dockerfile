@@ -69,3 +69,4 @@ RUN mkdir /cs3505 \
 
 COPY ./pyfiles /pyfiles
 COPY ./textImageGenerators /textImageGenerators
+COPY ./shell /shell
