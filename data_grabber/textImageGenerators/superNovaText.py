@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import os
 import datetime
+import sys
 
 '''
 USAGE NOTES:
@@ -18,7 +19,7 @@ the following files must be present in the directory where the python script is 
 '''
 
 
-inputFile = open('supernova.txt','r')
+inputFile = open(sys.argv[1],'r')
 lines = inputFile.readlines()
 
 outpath = '/dataStorage/'
