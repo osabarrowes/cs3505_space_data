@@ -4,7 +4,7 @@ import sys
 inputFile = open(sys.argv[1],'r')
 lines = inputFile.readlines()
 
-outpath = 'efs/'
+outpath = '/dataStorage/'
 tempTextFilePath = outpath + 'twitchInstance.txt'
 tempTextFile = open(tempTextFilePath, 'w')
 

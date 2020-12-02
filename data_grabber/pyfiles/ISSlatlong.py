@@ -19,3 +19,5 @@ fileObject = open(str1, "w")
 fileObject.write(Latitude.text + " " + Longitude.text)
 fileObject.close()
 driver.close()
+
+print(str1)

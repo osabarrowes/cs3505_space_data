@@ -33,3 +33,4 @@ while True:
 
 file.close
 driver.close()
+print(str1)

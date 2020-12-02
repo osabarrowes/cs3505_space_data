@@ -14,14 +14,14 @@ IMPORTANT PREREQUISITES:
 ffmpeg must be compiled with --enable-libfontconfig and --enable-libfreetype
 the following files must be present in the directory where the python script is executed:
     Modenine-2OPd.ttf   (the font we use to draw the text)
-    isspos.png  (black box that is 640x36)
+    blankTwitch.png  (black box that is 540x180)
 '''
 
 
 inputFile = open('supernova.txt','r')
 lines = inputFile.readlines()
 
-outpath = 'efs/'
+outpath = '/dataStorage/'
 tempTextFilePath = outpath + 'novaInstance.txt'
 tempTextFile = open(tempTextFilePath, 'w')
 

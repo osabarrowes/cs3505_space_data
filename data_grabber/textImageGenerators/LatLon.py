@@ -22,7 +22,7 @@ the following files must be present in the directory where the python script is 
 inputFile = open(sys.argv[1],'r')
 line = inputFile.readline().strip()
 
-outpath = 'efs/latlon/'
+outpath = '/dataStorage/'
 
 #outFileName = sys.argv[1].split('.tx')[0] + ".png"
 #outFileName = outFileName.replace("/", "-")

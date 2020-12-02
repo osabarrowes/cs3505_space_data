@@ -1,2 +1,2 @@
 #!/bin/bash
-./pyfiles/twitch.out
+python /textImageGenerators/twitchText.py $(./pyfiles/twitch.out)
