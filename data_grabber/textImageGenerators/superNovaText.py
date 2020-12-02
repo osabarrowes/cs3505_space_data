@@ -34,7 +34,7 @@ for line in lines:
 
     outFileName = str(int(novaTime)) + ".png"
 
-    ffmpegLine = "yes | ffmpeg -i blankTwitch.png -vf drawtext=\"fontsize=28:fontcolor=white:textfile='" + tempTextFilePath \
+    ffmpegLine = "yes | ffmpeg -i /textImageGenerators/blankTwitch.png -vf drawtext=\"fontsize=28:fontcolor=white:textfile='" + tempTextFilePath \
     + ":x=(w-text_w)/2:y=(h-text_h + 20)/2:fontfile='Modenine-2OPd.ttf':font='ModeNine'\" -pix_fmt rgba " + outpath + outFileName
 
     tempTextFile = open(tempTextFilePath, 'w')

@@ -30,7 +30,7 @@ outpath = '/dataStorage/'
 
 outFileName = str(time.time()).split('.')[0] + ".png"
 
-ffmpegLine = "yes | ffmpeg -i isspos.png -vf drawtext=\"fontsize=24:fontcolor=white:text='Latitude\: " +  ' '.join(line.split(' ')[0:1]) + " Longitude\: " + ' '.join(line.split(' ')[2:3]) \
+ffmpegLine = "yes | ffmpeg -i /textImageGenerators/isspos.png -vf drawtext=\"fontsize=24:fontcolor=white:text='Latitude\: " +  ' '.join(line.split(' ')[0:1]) + " Longitude\: " + ' '.join(line.split(' ')[2:3]) \
 + "':x=(w-text_w)/2:y=(h-text_h + 2)/2:fontfile='Modenine-2OPd.ttf':font='ModeNine'\" -pix_fmt rgba " + outpath + outFileName
 
 os.system(ffmpegLine)
