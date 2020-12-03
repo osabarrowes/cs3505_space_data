@@ -68,6 +68,6 @@ RUN apt install -y \
 #
 # Have additional steps appear after this
 
-COPY /home/ec2-user/environment/efs/data_grabber/pyfiles /pyfiles
-COPY /home/ec2-user/environment/efs/data_grabber/textImageGenerators /textImageGenerators
-COPY /home/ec2-user/environment/efs/data_grabber/shell /shell
+COPY ./pyfiles /pyfiles
+COPY ./textImageGenerators /textImageGenerators
+COPY ./shell /shell
