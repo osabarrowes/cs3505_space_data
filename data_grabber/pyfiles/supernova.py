@@ -23,7 +23,7 @@ while True:
     month = element1.text.split("/")[1]
     day = element1.text.split("/")[2]
     nowTime = time.gmtime()
-    if nowTime.tm_year != int(year) or nowTime.tm_mon != int(month) or nowTime.tm_mday - 1 > int(float(day)):
+    if nowTime.tm_year != int(year) or nowTime.tm_mon != int(month) or nowTime.tm_mday > int(float(day)):
         break
     path = "/html/body/table[2]/tbody/tr["+str(i)+"]/td[9]"
     i = i + 1
