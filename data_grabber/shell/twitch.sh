@@ -1,5 +1,5 @@
 #!/bin/bash
-TEXTFILE=$(./pyfiles/twitch.out);
+TEXTFILE=$(/pyfiles/twitch.out);
 python /textImageGenerators/twitchText.py $TEXTFILE;
-rm /dataSource/twitchInstance.txt;
+rm /dataStorage/twitchInstance.txt;
 rm $TEXTFILE
