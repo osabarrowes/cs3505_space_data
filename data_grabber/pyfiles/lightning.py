@@ -22,3 +22,5 @@ element = driver.find_element_by_xpath("/html/body/div[3]/div[2]/div[3]/div/div/
 element.screenshot(str1)
 
 driver.close()
+
+print(str1)

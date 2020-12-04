@@ -20,3 +20,5 @@ str1 = "/dataStorage/" + str(time.time()) + ".png"
 driver.save_screenshot(str1)
 
 driver.close()
+
+print(str1)
