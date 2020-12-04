@@ -30,7 +30,7 @@ for line in lines:
     
     novaTime = datetime.datetime.strptime(line.split('.')[0],"%Y/%m/%d")
     decimalDay = line.split('.')[1].split(' ')[0]
-    novaTime = novaTime.timestamp() + (float(decimalDay)/1000) * 86400
+    novaTime = novaTime.timestamp() + (((float(decimalDay)/1000) * 86400) + (7 * 3600))
 
     outFileName = str(int(novaTime)) + ".png"
 
