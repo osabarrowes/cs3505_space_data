@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+cron and/or lambdas?
+  Cron requires continuous running of a machine
+  Lambdas do not
+Split this into its own issue on the issue tracker
+We would like to use lambda statements
+AWS and EFS related tasks are complete
+Marley posted instructions for working with EFS in the discord server: make sure to read and follow
+EFS structure and naming conventions \PYGZhy{} directory framesegments has 6 subdirectories
+  issfeed
+  isscoords
+  lightningmap
+  supernovae
+  twitch
+  weather
+  frames
+
+Ted demonstrated completed work on the text\PYGZhy{}to\PYGZhy{}image task. Due to power outages, sample output was not available.
+Some supernovae data points occur with identical timestamps, which conflicts with the requirement that files be named after the unix time at which the data point occurred. We discussed and corrected this by having the script overwrite data points with identical times, so that only the last read data point is actually saved persistently.
+Corbin is still working on parts of the text\PYGZhy{}to\PYGZhy{}image task.
+
+When and how often should we start collecting data?
+  Supernovae: once per day
+  Other data sources: about once every 30 minutes
+  Start: ASAP
+Where should docker files be stored?
+
+Tasks for next week:
+Scheduled automatic data collection via lambda statements \PYGZhy{} Marley and Ted
+Ask Prof. Jensen about meeting next week \PYGZhy{} Edward
+UML class and sequence diagrams \PYGZhy{} Edward
+Current framebuilder program is hardcoded, and needs to be generalized to take arbitrary time ranges \PYGZhy{} Ivan and Garrett
+Ongoing work on
+An output video
+
+Next meeting 1 PM sunday \PYGZhy{} let’s keep it short please! (absolutely less than an hour)
+Please report if you finish anything early
+Review submission requirements
+\end{Verbatim}

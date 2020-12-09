@@ -32,16 +32,16 @@
   \subsection{Organization}
   % Use prose and UML as appropriate to describe how your project parts are organized.
   \paragraph{}
-  Scalability is an important goal for this project, which factors in to the organizational choices our team made. At the top level, all of our code is run on remote environments, and at lower levels is compartmentalized to allow for easy scalability.
+  Scalability is an important goal for this project, which factors in to the organizational choices our team made. At the top level, all of our code is run on remote environments, and at lower levels is compartmentalized to allow for easy scalability. This structure is illustrated in figure \ref{class_diagram}
   \paragraph{}
   The main operations of the program are run within a virtual machine instance using a service called Elastic Compute Cloud (EC2), which is itself a part of the greater Amazon Web Service (AWS). Within the EC2 instance are two Docker images: one for data collection, and one for data synthesis.
   \paragraph{}
-  The data collection image uses a web-scraping tool called Selenium, to collect images and data from internet sources. Selenium supports multiple languages, but we chose to use python to interface with its scripts. These data are stored as .png images in cloud storage, again provided by Amazon, called the Elastic File System (EFS).
+  The data collection image uses a web-scraping tool called Selenium, to collect images and data from internet sources. Selenium supports multiple languages, but we chose to use python to interface with its scripts. Excepting the data collected from twitch, all our data, both text based\footnote{In-between data collection and synthesis is a bit of formatting. Specifically, text based data (i.e. number of viewers on twitch) is converted to an .png file using a python script which interfaces directly with FFMPEG.} and image based, was collected using Selenium. For twitch, we wrote C++ code which directly interfaces with the Twitch API using a built-in C++ library called \verb|lcurl|. These data are stored as .png images in cloud storage, again provided by Amazon, called the Elastic File System (EFS).
   \paragraph{}
   Data synthesis occurs within a Docker image containing code we constructed, framebuilder.cpp. framebuilder assembles individual images collected in the EFS, combining them into 600 time-consecutive frames using FFMPEG. Subsequently, the frames are assembled into a minute long video (again using FFMPEG) showing all of the data.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{img/class_diagram.png}
+    \includegraphics[width=0.9\linewidth]{img/class_diagram.png}
     \caption{UML Class diagram depicting project structure}
     \label{class_diagram}
   \end{figure}
@@ -59,31 +59,31 @@
   \subsection{Execution}
   % Use prose and UML as appropriate to describe how your project parts execute.
   \paragraph{}
-  Execution occurs on both a continuous and instantaneous basis. Data collection occurs autonomously, and continuously, requiring no direct user input. Data synthesis occurs only when queried by the user interacting with the EC2 instance, illustrated below.
+  Execution occurs on both a continuous and instantaneous basis. Data collection occurs autonomously, and continuously, requiring no direct user input. Data synthesis occurs only when queried by the user interacting with the EC2 instance, illustrated in figure \ref{sequence_diagram}.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{img/sequence_diagram.png}
+    \includegraphics[width=0.9\linewidth]{img/sequence_diagram.png}
     \caption{UML Sequence diagram depicting project execution}
-    \label{seuqence_diagram}
+    \label{sequence_diagram}
   \end{figure}
   \paragraph{}
   Autonomous data collection occurs at regular intervals, using the Linux command 'cron'. When data collection occurs, six Docker containers are instanced from the same image, each containing python code which collets data from various sources. The image itself contains all the code that all containers could need, however each data source updates at a different frequency. To compensate for this, we instance containers at appropriate time intervals in order to collect data.
   \paragraph{}
   A user can query the EC2 instance to produce a video compilation of collected data by running a bash script within the virtual machine. Running the script launches a Docker container, which contains our framebuilder.cpp program, which assembles all the data together into a minute long video. The container itself has FFMPEG installed, since framebuilder.cpp relies on its use.
-
+\newpage
 \section{Development}
   \subsection{Organizational Tools}
   % Write a brief summary of the tools used to organize your project.
-  To organize our project, we made use of GitHub and its associated functionality. All our code was backed by a git repository\footnote{https://github.com/xenonni/cs3505\_space\_data}, and our development progress was tracked using GitHub Projects and Issue Tracker.
+  To organize our project, we made use of GitHub and its associated functionality. All our code was backed by a git repository\footnote{https://github.com/xenonni/cs3505\_space\_data}, and our development progress was tracked using GitHub Projects and Issue Tracker seen in figures \ref{github_projects} and \ref{backlog}.
   % Write/provide documentation from your planning software
-  \begin{figure}[H]
+  \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{img/github_projects.png}
+    \includegraphics[width=\linewidth]{img/github_projects.png}
     \caption{A screenshot showing the tracker, GitHub projects, which we used to organize development.}
     \label{github_projects}
   \end{figure}
 
-  \begin{figure}[H]
+  \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{img/task_backlog.png}
     \caption{A screenshot showing a backlog of completed tasks (closed issues) in GitHub projects.}
@@ -97,7 +97,7 @@
     \paragraph{Ted Goodell -}
     I worked with Ivan on using the ffmpeg libraries to combine multiple images into a single image. To do this, we wrote code that decoded several images from their files and put them into frame structs that we could then programmatically combine into a larger frame. We then used the ffmpeg libraries to encode that frame and put it into an output image. I also, wrote python scripts that grabbed text data output by the data grabbers, and used the ffmpeg command line utility to put that text into an image. The ffmpeg command used a built in filter called “drawtext” to draw the text on a black template image for that portion of the final output image.
     \paragraph{Ivan Burkett -}
-    I was assigned to work on the frame builder program for this project. I worked with Ted to create a C++ program called image-smoosh.cpp that used ffmpeg to combine the 6 frame segments into a single frame, then saved that frame as a png image. After finishing image-smoosh.cpp, I refactored the program to make it cleaner and easier to read and saved it as image-smoosh2.cpp. After doing that, I used image-smoosh2.cpp as a base to create framebuilder.cpp with Garrett. As part of making framebuilder.cpp, I also created a wrapper class for the C++ class directory-iterator called peek-directory-iterator, which simplified usage for directory-iterator and added a peek functionality which was necessary for our file traversal algorithm. framebuilder.cpp uses peek-directory-iterators to scan through the data source folders for the one most up to date for the provided date during the frame building process.
+    I was assigned to work on the frame builder program for this project. I worked with Ted to create a C++ program called image-smoosh.cpp that used ffmpeg to combine the 6 frame segments into a single frame, then saved that frame as a png image. After finishing image-smoosh.cpp, I refactored the program to make it cleaner and easier to read and saved it as image-smoosh2.cpp. After doing that, I used image-smoosh2.cpp as a base to create framebuilder.cpp with Garrett. As part of making framebuilder.cpp, I also created a wrapper class for the C++ class directory-iterator called peek-directory-iterator, which simplified usage for directory-iterator and added a peek functionality which was necessary for our file traversal algorithm. framebuilder.cpp uses peek-directory-iterators to scan through the data source folders for the one most up to date for the provided date during the frame building process. Due to the way AWS's filesystem works, I ended up scrapping peek\_directory\_iterator. the final version loads all files in the directory and then sorts them, because AWS doesn't have any useful ordering to the files and directory\_iterator doesn't ensure any kind of ordering. loading them all and sorting them was the only way to ensure the ordering.
     \paragraph{Garrett Keefe -}
     I first worked on gathering research on docker and how it works. Then I was assigned with Corbin to work on the data scrappers to collect data from our 6 sources. I wrote all of the .py files which used selenium to navigate and grab web resources while Corbin wrote the twitch.out file which uses C++ and the curl libraries to query twitch.tv for info from its API. After that I was assigned to working with Ivan to create the framebuilder program which utilize UNIX timestamps to assemble data from our data sources and compile them together into individual frames, allowing us to generate a list of frames which we use an ffmpeg command to assemble them into a video. I also helped Ted create all of the .sh files which acted as drivers for our data collection and converting to picture formats within the docker containers.
     \paragraph{Edward Barrowes -}
@@ -109,16 +109,50 @@
   According to the goals of our project, we have complete functionality. Our project works fully as intended because we can leave our EC2 instance running to collect data without having to even be signed into our AWS account. The timeline video is generated with minimal user input.
   \subsection{Running the Code}
   % Briefly indicate requirements and steps for running the project code.
-   To make a video from the data you simply run the command “create\_video.sh mm.dd.yyyy.hh.ss mm.dd.yyyy.hh.ss” with the desired start and end times.
+   To make a video from the data you simply run the command \\ \verb|./create_video.sh MM.DD.YYYY.HH.mm MM.DD.YYYY.HH.mm|\\ with the desired start and end times.
   % screenshot from the output video
   \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{img/timeline_screenshot.png}
-    \caption{A screenshot from the completed timeline.}
+    \caption{A screenshot from the completed timeline.} % TODO https://youtu.be/6zjmkBwWGZg
     \label{timeline}
   \end{figure}
 
 \section{Appendix A: Meeting Notes}
-%TODO Attach all the meeting notes as an appendix
+
+\subsection{Meeting notes 10/29}
+\inputminted[breaklines=true, linenos=true]{text}{../meeting_notes/meeting_notes_10_29.txt}
+
+\subsection{Meeting notes 11/3}
+\inputminted[breaklines=true, linenos=true]{text}{../meeting_notes/meeting_notes_11_3.txt}
+
+\subsection{Meeting notes 11/10}
+\inputminted[breaklines=true, linenos=true]{text}{../meeting_notes/meeting_notes_11_10.txt}
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{../meeting_notes/meeting_notes_image_11_10.png}
+  \caption{Image from meeting notes for 11/10}
+\end{figure}
+
+\subsection{Meeting notes 11/12}
+\inputminted[breaklines=true, linenos=true]{text}{../meeting_notes/meeting_notes_11_12.txt}
+
+\subsection{Meeting notes 11/17}
+\inputminted[breaklines=true, linenos=true]{text}{../meeting_notes/meeting_notes_11_17.txt}
+
+\subsection{Meeting notes 11/24}
+\inputminted[breaklines=true, linenos=true]{text}{../meeting_notes/meeting_notes_11_24.txt}
+
+\subsection{Meeting notes 11/29}
+\inputminted[breaklines=true, linenos=true]{text}{../meeting_notes/meeting_notes_11_29.txt}
+
+\subsection{Meeting notes 12/1}
+\inputminted[breaklines=true, linenos=true]{text}{../meeting_notes/meeting_notes_12_1.txt}
+
+\newpage
+\section{Appendix B: Layout design}
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{../layout/cs_3505_space_data_layout.png}
+  \caption{A finalized version of the layout from 11/10}
+\end{figure}
 
 \end{document}

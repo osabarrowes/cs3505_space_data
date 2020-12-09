@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+Todo for next checkpoint (1 week from today)
+\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}\PYGZus{}
+
+TA: Josh Nelson, Thursday 4:15 PM
+Setup github repo
+Using the tracking tool of choice (github projects) to setup a backlog of work, broken into tasks that take 3\PYGZhy{}4 hours, leading from start to finish. These can be updated and revised throughout the entirety of the project.
+Plan the first sprint
+Assign tasks to people for the first sprint
+Recommended: Spike tasks as part of the sprint
+  1\PYGZhy{}2 hour long tasks
+    example: draw a smiley face with ffmpeg as a .png
+    The idea is so you know how to interface with a a part of the system for future troubleshooting
+Plan regularly scheduled standups. Everyone should be there, everyone must share:
+  What they\PYGZsq{}re working on
+  What they\PYGZsq{}re stuck with
+  What they\PYGZsq{}re doing next
+  Suggested one standup per sprint
+  Each person gets about 1\PYGZhy{}2 minutes for this
+The timescale of the minute of output data is up to you
+  it could be as much as 48 hours compressed into a minute
+  another group using 1/day covid data was \PYGZdq{}pushing it\PYGZdq{}, so probably try not to go lower frequency than that for more than one data source
+  Grabbing the most recent data point from a slow updating source would be fine
+  The most ideal would be to have data that updates on the scale of hours rather than days
+Data seeding: ask the professor
+We don\PYGZsq{}t have to use the exact same time slot, but we should try and get the same TA
+\end{Verbatim}

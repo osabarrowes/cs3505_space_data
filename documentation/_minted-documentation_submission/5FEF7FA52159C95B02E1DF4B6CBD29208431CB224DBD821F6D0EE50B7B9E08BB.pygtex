@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+One of the requirements is to write C++ code that interfaces with FFMPEG at some point. Displaying weather data using a color drawn by ffmpeg (orange for increase, blue for decrease) could easily satisfy this requirement.
+We discussed turning all data into images and storing the images in the elastic file storage, which is how we will store data going forward.
+By giving each data source a fixed section of the overall video frame, we can display all the data in the final video by copying a given data source’s image into its designated region. These regions would be hard coded.
+For all tasks, reach out if anyone needs any help
+Tasks for this week:
+ \PYGZhy{} someone should write a program that will assemble all the separate images (data sources) into one frame. Expect a progress update on tuesday on whether or not the task will need more time. Assigned to Ted and Ivan
+ \PYGZhy{} ongoing preparation of the AWS environment, especially so that it’s completely ready for other parts of the project. Specifically, spinning up a docker container on a regular timer. Make sure to have the E2 and elastic storage set up.
+ \PYGZhy{} Garret will help Corbin with ongoing web scraping
+ \PYGZhy{} Edward will design the layout of all individual data sources, i.e. how big each box should be, where it should go, as concretely as possible.
+\end{Verbatim}

@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+Garrett and Ivan are nearly done, scales correctly with time and grabs images. Just needs command line arguments to specify a time window.
+Turn in date: let’s set an appointment for 1 PM on the 10th
+Edward has been busy and hasn’t worked more on documentation yet, but should be good moving forward.
+Marley will send Edward a paragraph explaining troubleshooting AWS problems to include in the documentation
+Continued editing of the cron tab file
+Text conversion python scripts should output to /dataStorage 
+We discussed some of the details of when docker containers should run and how often.
+Supernovae makes multiple files, so maybe run it only once every two hours.
+What Ted needs is a list of shell commands for each docker container and how frequently each of them should be run. Garrett can provide this.
+Once the .sh files are done (Garrett and Ted), Marley can schedule them with cron tab.
+Goal: start data collection by tomorrow night
+What path did we decide to mount EFS to?
+    Marley posted a screenshot in chat
+Edward submitted times to meet with the professor
+Edward posted on piazza asking for clarification on the documents to be submitted
+Next meeting: 2PM thursday
+\end{Verbatim}
